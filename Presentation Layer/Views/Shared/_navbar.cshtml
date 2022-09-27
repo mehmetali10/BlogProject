@@ -1,0 +1,43 @@
+﻿<style>
+    .navbar {
+        margin: 0 auto 2.5rem auto;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .nav-link {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .new-blog {
+        padding: 1.5rem 2.5rem;
+    }
+
+    .newblog-div {
+        text-align: center;
+    }
+
+</style>
+
+
+    <!-- Navbar Section -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" asp-action="Index" asp-controller="Article">Blog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="LogOut" asp-controller="Account">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+

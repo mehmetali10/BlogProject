@@ -1,0 +1,112 @@
+﻿@model NewArticleDto;
+@{
+    var name = ViewBag.Name as string;
+}
+<!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Add New Blog</title>
+        <link rel="icon" href="~/images/favicon (2).ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <style>
+        body {
+            background-color: #FBF5E9;
+        }
+        .new-blog {
+            padding: 1.5rem 2.5rem;
+        }
+
+        .newblog-div {
+            text-align: center;
+        }
+
+        .text-blog, .header-box {
+            margin: auto;
+            width: 60%;
+        }
+
+        .option, .save-blog{
+            width: 8.5rem;
+            height: 3rem;
+            text-align: justify;
+        }
+
+        .header-box {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+    </head>
+    <body>
+
+        <!-- Navbar Section -->
+        @Html.Partial("~/Views/Shared/_navbar.cshtml")
+
+
+    
+    <div class="text-blog">
+        <input class="header-box" type="textBox" placeholder="Blog's Header" asp-for="Header">
+        <textarea name="textarea" cols="136" rows="18" placeholder="Blog's Content" asp-for="Content"></textarea>
+        <div>
+            <label for="formFile" class="form-label">Optional to choose blog image</label>
+            <div class="mb-3">
+
+                <input class="form-control" type="file" id="formFile">
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <select class="form-select option" aria-label="Default select example" asp-for="FontSize">
+                        <option selected>Font size</option>
+                        <option value="1">16px</option>
+                        <option value="2">25px</option>
+                        <option value="3">40px</option>
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                    <select class="form-select option" aria-label="Default select example" asp-for="FontFamily">
+                        <option selected>Font Family</option>
+                        <option value="1">Montserrat</option>
+                        <option value="2">Open Sans</option>
+                        <option value="3">Poppins</option>
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                    <select class="form-select option" aria-label="Default select example" asp-for="FontColor">
+                        <option selected>Font Color</option>
+                        <option value="1">Black</option>
+                        <option value="2">Blue</option>
+                        <option value="3">Red</option>
+                    </select>
+                </div>
+               @* @{
+                    var parms = new Dictionary<string, string>
+                {
+                { "Header", Model.Header },
+                { "Content", Model.Content },
+                { "Picture", Model.Picture },
+                { "FontSize", Model.FontSize },
+                { "FontFamily", Model.FontFamily },
+                { "FontColor", Model.FontColor }
+                };
+                }*@
+
+                <div class="col-lg-3">
+                    <button type="submit" asp-action="Deneme" asp-controller="Article" asp-route-Header="@Model.Header"
+                                                                    asp-route-Content="@Model.Content"
+                                                                    asp-route-Picture="@Model.Picture"
+                                                                    asp-route-FontSize="@Model.FontSize"
+                                                                    asp-route-FontFamily="@Model.FontFamily"
+                                                                    asp-route-FontColor="@Model.FontColor"
+                    class="btn btn-success save-blog">save blog</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    </body>
+    </html>

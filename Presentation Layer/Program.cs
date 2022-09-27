@@ -1,3 +1,5 @@
+using BlogData.Entity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,6 +12,8 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+//builder.Services.AddTransient<BlogDbContext>();
 
 
 var app = builder.Build();

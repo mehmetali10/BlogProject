@@ -12,7 +12,7 @@ namespace BlogData.Entity
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=MEHMETALIMERGEN10\\SQLEXPRESS;Database=BlogDb;Trusted_Connection=True;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer("Data Source=MEHMETALI10\\SQLEXPRESS;Database=BlogDb;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
 
         public DbSet<User> Users { get; set; }

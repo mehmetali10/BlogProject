@@ -16,6 +16,7 @@ namespace Presentation_Layer.Controllers
             return View();
         }
 
+
         [HttpPost]
         public IActionResult Login(LoginDto loginDto)
         {
@@ -29,28 +30,29 @@ namespace Presentation_Layer.Controllers
 
             if (user != null)
             {
-                var sesion = new SesionDto
-                {
-                    Id = user.Id,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    UserName = user.UserName,
-                    Password = user.Password
-                };
+                //var sesion = new SesionDto
+                //{
+                //    Id = user.Id,
+                //    FirstName = user.FirstName,
+                //    LastName = user.LastName,
+                //    Email = user.Email,
+                //    UserName = user.UserName,
+                //    Password = user.Password
+                //};
 
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.UserData, JsonConvert.SerializeObject(sesion))
-                };
-                var userIdentity = new ClaimsIdentity(claims, "login");
+               
 
-                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-                HttpContext.SignInAsync(principal);
+                HttpContext.Session.SetInt32("Id", user.Id);
+                HttpContext.Session.SetString("FirstName", user.FirstName);
+                HttpContext.Session.SetString("LastName", user.LastName);
+                HttpContext.Session.SetString("Email", user.Email);
+                HttpContext.Session.SetString("UserName", user.UserName);
+                HttpContext.Session.SetString("Password", user.Password);
 
-                HttpContext.Session.SetString("_User", JsonConvert.SerializeObject(sesion));
+                var testId = HttpContext.Session.GetInt32("Id");
+                var testName = HttpContext.Session.GetString("FirstName");
 
-                return View("SignUp");
+                return RedirectToAction("Index", "Article");
             }
             else
             {
@@ -60,17 +62,35 @@ namespace Presentation_Layer.Controllers
 
         }
 
+
         [HttpGet]
         public IActionResult SignUp()
         {
             return View();
         }
 
+
         [HttpPost]
         public IActionResult SignUp(SignUpDto signUpDto)
         {
             AccountDataAccess.CreateAccount(signUpDto);
             return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.SetString("_User", string.Empty);
+            HttpContext.Session.SetInt32("Id", 0);
+            HttpContext.Session.SetString("FirstName", string.Empty);
+            HttpContext.Session.SetString("LastName", string.Empty);
+            HttpContext.Session.SetString("Email", string.Empty);
+            HttpContext.Session.SetString("UserName", string.Empty);
+            HttpContext.Session.SetString("Password", string.Empty);
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Login", "Account");
         }
     }
 }
