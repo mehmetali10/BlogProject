@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace BlogData.Dtos
    
         public string Header { get; set; }
         public string Content { get; set; }
-        public string Picture { get; set; }
+        public IFormFile Picture { get; set; }
         public string FontSize { get; set; }
         public string FontFamily { get; set; }
         public string FontColor { get; set; }

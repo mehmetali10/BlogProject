@@ -1,4 +1,5 @@
-﻿using BlogData.Dtos;
+﻿using BlogData.DataAccess;
+using BlogData.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation_Layer.Controllers
@@ -11,19 +12,15 @@ namespace Presentation_Layer.Controllers
             return View();
         }
 
+
         [HttpPost]
-        IActionResult Deneme(string Header, string Content, string Picture, string FontSize, string FontFamily, string FontColor)
+        public async Task<IActionResult> Deneme(NewArticleDto newArticleDto)
         {
-            string a = "0";
-            return View();
+            int? userId = HttpContext.Session.GetInt32("Id");
+            await ArticleDataAccess.AddArticle(newArticleDto, userId);
+            return View("Index");
         }
 
-        //[HttpPost]
-        //IActionResult Deneme(NewArticleDto newArticleDto)
-        //{
-        //    string a = "0";
-        //    return View();
-        //}
 
 
         [HttpGet]

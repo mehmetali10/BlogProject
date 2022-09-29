@@ -7,7 +7,24 @@
     <title>Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="icon" href="~/images/favicon (2).ico" />
+    <style>
+        .new-blog {
+            position: fixed;
+            margin-left: 0;
+        }
 
+        .card {
+            margin: 5rem auto 0;
+            width: 40rem;
+            height: 25rem;
+        }
+
+            .card > img {
+                width: 100%;
+                height: 60%;
+            }
+
+    </style>
 </head>
 <body>
     
@@ -18,8 +35,86 @@
     <!-- main section -->
     <main>
         <div class="container new-blog-div">
-        <a class="new-blog btn btn-outline-success" asp-controller="Article" asp-action="AddNewBlog">Add New Blog</a> 
-    </div>
+            <a class="new-blog btn btn-outline-success" asp-controller="Article" asp-action="AddNewBlog">Add New Blog</a> 
+        </div>  
+
+        <section id="card-menu">
+            <div class="card mb-3">
+                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content.
+                        This content is a little bit longer.
+                    </p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content.
+                        This content is a little bit longer.
+                    </p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+
+
+            <div class="card mb-3">
+                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content.
+                        This content is a little bit longer.
+                    </p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+
+
+            <div class="card mb-3">
+                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content.
+                        This content is a little bit longer.
+                    </p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+
+
+            <div class="card mb-3">
+                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content.
+                        This content is a little bit longer.
+                    </p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+
+
+            <div class="card mb-3">
+                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content.
+                        This content is a little bit longer.
+                    </p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </section>
 
 
     </main>
