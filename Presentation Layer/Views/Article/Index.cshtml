@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var userName = ViewBag.UserName as string;
+    var list = ViewBag.List as List<Article>;
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +15,17 @@
     <link rel="icon" href="~/images/favicon (2).ico" />
     <style>
         .new-blog {
+            padding: 1.0rem 2.5rem;
+            margin-top: 4.5rem;
+            margin-right: 0;
+        }
+
+        .newblog-div {
+            text-align: center;
+        }
+
+
+        .new-blog {
             position: fixed;
             margin-left: 0;
         }
@@ -16,108 +33,60 @@
         .card {
             margin: 5rem auto 0;
             width: 40rem;
-            height: 25rem;
+            height: 37rem;
         }
 
-            .card > img {
-                width: 100%;
-                height: 60%;
-            }
+        .cimg {
+            width: 700px;
+            height: 220px;
+        }
 
+        body{
+            background-color: #E9F2FF;
+        }
+
+        a{
+            text-decoration: none;
+        }
+        
     </style>
 </head>
 <body>
-    
+  @if(!string.IsNullOrEmpty(userName)) { 
     <!-- Navbar Section -->
     @Html.Partial("~/Views/Shared/_navbar.cshtml")
+ 
 
-
-    <!-- main section -->
-    <main>
         <div class="container new-blog-div">
-            <a class="new-blog btn btn-outline-success" asp-controller="Article" asp-action="AddNewBlog">Add New Blog</a> 
+            <a class="new-blog btn btn-outline-primary" asp-controller="Article" asp-action="AddNewBlog">Add New Blog</a> 
         </div>  
 
+
+
+
         <section id="card-menu">
-            <div class="card mb-3">
-                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-
-            <div class="card mb-3">
-                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-
-
-            <div class="card mb-3">
-                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-
-
-            <div class="card mb-3">
-                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-
-
-            <div class="card mb-3">
-                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-
-
-            <div class="card mb-3">
-                <img class="card-img-top" src="https://eslbrains.com/wp-content/uploads/2019/09/how-to-learn-a-language-like-a-hyper-polyglot.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </section>
-
-
-    </main>
+            @if (list != null)
+            {
+                @foreach (var item in list)
+                {
+*@             
+                    <div class="card mb-3">
+                        <img class="card-img-top" src="~/images/@item.Picture" alt="Card image cap">
+                        <div class="card-body">
+                           <a asp-action="ShowArticle" asp-controller="Article" asp-route-id="@item.Id"> 
+                               <h5 class="card-title">@item.Header</h5>
+                            </a>
+                            <p class="card-text">
+                                @item.Content.Substring(0,100)...
+                            </p>
+                            <p class="card-text"><small class="text-muted">@userName</small></p>
+                        </div>
+                    </div>
+               
+                }
+            }
+            </section>
+}
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>

@@ -9,6 +9,9 @@ namespace Presentation_Layer.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+            int? userId = HttpContext.Session.GetInt32("Id");
+            ViewBag.List = ArticleDataAccess.GetArticlesByUserId(userId);
             return View();
         }
 
@@ -18,7 +21,7 @@ namespace Presentation_Layer.Controllers
         {
             int? userId = HttpContext.Session.GetInt32("Id");
             await ArticleDataAccess.AddArticle(newArticleDto, userId);
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
 
@@ -27,6 +30,12 @@ namespace Presentation_Layer.Controllers
         public IActionResult AddNewBlog()
         {
             ViewBag.Name = HttpContext.Session.GetString("FirstName");
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ShowArticle(int id)
+        {
             return View();
         }
     }
