@@ -69,12 +69,12 @@
             {
                 @foreach (var item in list)
                 {
-*@             
+            
                     <div class="card mb-3">
                         <img class="card-img-top" src="~/images/@item.Picture" alt="Card image cap">
                         <div class="card-body">
-                           <a asp-action="ShowArticle" asp-controller="Article" asp-route-id="@item.Id"> 
-                               <h5 class="card-title">@item.Header</h5>
+                            <a asp-action="ShowArticle" asp-controller="Article" asp-route-articleId="@item.Id">
+                                <h5 class="card-title">@item.Header</h5>
                             </a>
                             <p class="card-text">
                                 @item.Content.Substring(0,100)...

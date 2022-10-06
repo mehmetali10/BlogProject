@@ -26,15 +26,15 @@ namespace BlogData.DataAccess
 
             //fontFamily validation
             if (model.FontFamily.Equals("Font Family"))
-                model.FontFamily = "montserrat";
+                model.FontFamily = "'Poppins', sans-serif";
 
             //FontSize validation
             if (model.FontSize.Equals("Font Size"))
-                model.FontSize = "25px";
+                model.FontSize = "16px";
 
             //FontColor validation
             if (model.FontColor.Equals("Font Color"))
-                model.FontColor = "black";
+                model.FontColor = "#191919";
 
             //Picture validation
             if (model.Picture != null)
@@ -90,5 +90,30 @@ namespace BlogData.DataAccess
             
         }
 
+    
+        public static  GetSingleArticleDto GetArticleById(int articleId)
+        {
+            BlogDbContext _blogDbContext = new BlogDbContext();
+            Article article =  _blogDbContext.Articles.Find(articleId);
+
+            if (article == null)
+                return null;
+
+            GetSingleArticleDto dto = new()
+            {
+                Content = article.Content,
+                CreatedDate = article.CreatedDate,
+                FontColor = article.FontColor,
+                FontFamily = article.FontFamily,
+                FontSize = article.FontSize,
+                Header = article.Header,
+                Picture = article.Picture,
+                UserId  = article.UserId,
+            };
+
+            return dto;
+        }
+
+    
     }
 }

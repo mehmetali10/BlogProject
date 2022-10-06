@@ -34,8 +34,9 @@ namespace Presentation_Layer.Controllers
         }
 
         [HttpGet]
-        public IActionResult ShowArticle(int id)
+        public IActionResult ShowArticle(int articleId)
         {
+            ViewBag.Article = ArticleDataAccess.GetArticleById(articleId);
             return View();
         }
     }
