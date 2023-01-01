@@ -13,56 +13,17 @@
     <title>Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="icon" href="~/images/favicon (2).ico" />
-    <style>
-        .new-blog {
-            padding: 1.0rem 2.5rem;
-            margin-top: 4.5rem;
-            margin-right: 0;
-        }
-
-        .newblog-div {
-            text-align: center;
-        }
-
-
-        .new-blog {
-            position: fixed;
-            margin-left: 0;
-        }
-
-        .card {
-            margin: 5rem auto 0;
-            width: 40rem;
-            height: 37rem;
-        }
-
-        .cimg {
-            width: 700px;
-            height: 220px;
-        }
-
-        body{
-            background-color: #E9F2FF;
-        }
-
-        a{
-            text-decoration: none;
-        }
-        
-    </style>
+    <link rel="stylesheet" href="~/css/card.css">
 </head>
 <body>
   @if(!string.IsNullOrEmpty(userName)) { 
     <!-- Navbar Section -->
     @Html.Partial("~/Views/Shared/_navbar.cshtml")
  
+       <div class="new-blog">
+            <a class="new-blog-a btn btn-outline-success" asp-controller="Article" asp-action="AddNewBlog">Add New Blog</a>
 
-        <div class="container new-blog-div">
-            <a class="new-blog btn btn-outline-primary" asp-controller="Article" asp-action="AddNewBlog">Add New Blog</a> 
-        </div>  
-
-
-
+        </div>
 
         <section id="card-menu">
             @if (list != null)

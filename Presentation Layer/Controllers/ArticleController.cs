@@ -36,6 +36,7 @@ namespace Presentation_Layer.Controllers
         [HttpGet]
         public IActionResult ShowArticle(int articleId)
         {
+            ViewBag.UserName = HttpContext.Session.GetString("UserName");
             ViewBag.Article = ArticleDataAccess.GetArticleById(articleId);
             return View();
         }

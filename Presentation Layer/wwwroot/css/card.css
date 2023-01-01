@@ -1,0 +1,34 @@
+﻿.new-blog-a {
+    padding: 1.0rem 2.5rem;
+    text-decoration: none;
+    margin-left: 33rem;
+    width: 39rem;
+}
+
+
+.new-blog {
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.card {
+    margin: 5rem auto 0;
+    width: 40rem;
+    height: 28rem;
+}
+
+.card-img-top {
+    width: 39rem;
+    height: 280px;
+    margin-left: 8px;
+    margin-top: 10px;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.card-body a {
+    text-decoration: none;
+}
+

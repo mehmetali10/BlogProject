@@ -81,7 +81,7 @@ namespace BlogData.DataAccess
         public static List<Article> GetArticlesByUserId(int? userId)
         {
             BlogDbContext _blogDbContext = new BlogDbContext();
-            var articles = _blogDbContext.Articles.Where(x => x.UserId == userId).ToList();
+            var articles = _blogDbContext.Articles.Where(x => x.UserId == userId).OrderByDescending(x => x.Id).ToList();
             
             if(articles.Count == 0)
                 return null;

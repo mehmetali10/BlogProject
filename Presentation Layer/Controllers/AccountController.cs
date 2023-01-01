@@ -3,8 +3,7 @@ using BlogData.Dtos;
 using BlogData.DataAccess;
 using BlogData.Entity;
 using Microsoft.AspNetCore.Authentication;
-using System.Security.Claims;
-using Newtonsoft.Json;
+
 
 namespace Presentation_Layer.Controllers
 {
@@ -30,18 +29,6 @@ namespace Presentation_Layer.Controllers
 
             if (user != null)
             {
-                //var sesion = new SesionDto
-                //{
-                //    Id = user.Id,
-                //    FirstName = user.FirstName,
-                //    LastName = user.LastName,
-                //    Email = user.Email,
-                //    UserName = user.UserName,
-                //    Password = user.Password
-                //};
-
-               
-
                 HttpContext.Session.SetInt32("Id", user.Id);
                 HttpContext.Session.SetString("FirstName", user.FirstName);
                 HttpContext.Session.SetString("LastName", user.LastName);
@@ -74,7 +61,7 @@ namespace Presentation_Layer.Controllers
         public IActionResult SignUp(SignUpDto signUpDto)
         {
             AccountDataAccess.CreateAccount(signUpDto);
-            return View();
+            return View("Login");
         }
 
 
