@@ -9,7 +9,7 @@ namespace Presentation_Layer.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+            ViewBag.FirstName = HttpContext.Session.GetString("FirstName");
             int? userId = HttpContext.Session.GetInt32("Id");
             ViewBag.List = ArticleDataAccess.GetArticlesByUserId(userId);
             return View();
@@ -36,7 +36,7 @@ namespace Presentation_Layer.Controllers
         [HttpGet]
         public IActionResult ShowArticle(int articleId)
         {
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+            ViewBag.FirstName = HttpContext.Session.GetString("FirstName");
             ViewBag.Article = ArticleDataAccess.GetArticleById(articleId);
             return View();
         }

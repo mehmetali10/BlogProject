@@ -89,11 +89,13 @@
                 <p>@article.Content</p>
             </div>
             <div class="user-name">
-                <h2>@ViewBag.UserName</h2>
+                <h2>@ViewBag.FirstName</h2>
             </div>
         </div>
     </div>
 
+    <!-- Footer Section -->
+    @Html.Partial("~/Views/Shared/_footer.cshtml")
 
     <!-- TODO: Here goes your content! -->
     <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
