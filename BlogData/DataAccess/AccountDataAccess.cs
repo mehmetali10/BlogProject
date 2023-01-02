@@ -49,6 +49,11 @@ namespace BlogData.DataAccess
         {
             BlogDbContext blogDbContext = new BlogDbContext();
 
+            if(string.IsNullOrEmpty(loginDto.Email) || string.IsNullOrEmpty(loginDto.Password))
+            {
+                return null;
+            }
+
             User user = blogDbContext.Users.FirstOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
 
             if (user == null)
