@@ -19,12 +19,6 @@ namespace Presentation_Layer.Controllers
         [HttpPost]
         public IActionResult Login(LoginDto loginDto)
         {
-            if (string.IsNullOrWhiteSpace(loginDto.Email) || string.IsNullOrWhiteSpace(loginDto.Password))
-            {
-                ViewBag.Error = "Lütfen kullanıcı bilgileriniz eksiksiz doldurunuz";
-                return View("Login");
-            }
-
             User user = AccountDataAccess.Login(loginDto);
 
             if (user != null)
