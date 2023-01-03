@@ -54,7 +54,10 @@ namespace Presentation_Layer.Controllers
         public IActionResult SignUp(SignUpDto signUpDto)
         {
             if (AccountDataAccess.CreateAccount(signUpDto))
+            {
+                TempData["successMsg"] = "User succeffuly registered";
                 return RedirectToAction("Login", "Account");
+            }
             else
             {
                 ViewBag.Error = "Invalid inputs. Please try again !";
