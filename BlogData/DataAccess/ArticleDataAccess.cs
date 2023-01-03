@@ -18,11 +18,13 @@ namespace BlogData.DataAccess
         {
             BlogDbContext blogDbContext = new BlogDbContext();
 
+            if(string.IsNullOrEmpty(model.Header) || string.IsNullOrEmpty(model.Content))
+            {
+                return false;
+            }
+
             string picPath = "";
 
-            //header validation
-            if (model.Header == null)
-                model.Header = "Blog's Header";
 
             //fontFamily validation
             if (model.FontFamily.Equals("Font Family"))
@@ -38,7 +40,14 @@ namespace BlogData.DataAccess
 
             //Picture validation
             if (model.Picture != null)
+            {
                 picPath = ImageWork(model.Picture);
+
+            }
+            else
+            {
+                picPath = "086cf005-14cf-4c55-a594-782ed0d4c9a9.jpg";
+            }
 
 
             Article article = new()
@@ -50,7 +59,7 @@ namespace BlogData.DataAccess
                 CreatedDate = DateTime.Now,
                 FontFamily = model.FontFamily,
                 FontSize = model.FontSize,
-                UserId = (int) userId
+                UserId = (int)userId
             };
 
             await blogDbContext.Articles.AddAsync(article);

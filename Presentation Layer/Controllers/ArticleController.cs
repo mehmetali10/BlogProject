@@ -17,11 +17,16 @@ namespace Presentation_Layer.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Deneme(NewArticleDto newArticleDto)
+        public async Task<IActionResult> AddNewBlog(NewArticleDto newArticleDto)
         {
             int? userId = HttpContext.Session.GetInt32("Id");
-            await ArticleDataAccess.AddArticle(newArticleDto, userId);
-            return RedirectToAction("Index");
+            if(await ArticleDataAccess.AddArticle(newArticleDto, userId))
+                return RedirectToAction("Index");
+            else
+            {
+                ViewBag.Error = "Blog title and header cannot be empty";
+                return View();
+            }
         }
 
 
