@@ -1,4 +1,9 @@
-﻿.new-blog-a {
+﻿a{
+    text-decoration: none;
+}
+
+
+.new-blog-a {
     padding: 1.0rem 2.5rem;
     text-decoration: none;
     margin-left: 33rem;
@@ -31,3 +36,8 @@ body {
     text-decoration: none;
 }
 
+
+.no-blog-state {
+    margin: 50px auto;
+    padding-left: 40%;  
+}

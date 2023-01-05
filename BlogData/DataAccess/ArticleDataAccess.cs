@@ -87,7 +87,7 @@ namespace BlogData.DataAccess
         }
     
     
-        public static List<Article> GetArticlesByUserId(int? userId)
+        public static List<Article>? GetArticlesByUserId(int? userId)
         {
             BlogDbContext _blogDbContext = new BlogDbContext();
             var articles = _blogDbContext.Articles.Where(x => x.UserId == userId).OrderByDescending(x => x.Id).ToList();
@@ -100,7 +100,7 @@ namespace BlogData.DataAccess
         }
 
     
-        public static  GetSingleArticleDto GetArticleById(int articleId)
+        public static  GetSingleArticleDto? GetArticleById(int articleId)
         {
             BlogDbContext _blogDbContext = new BlogDbContext();
             Article article =  _blogDbContext.Articles.Find(articleId);
