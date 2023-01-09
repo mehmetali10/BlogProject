@@ -55,7 +55,7 @@ namespace Presentation_Layer.Controllers
         {
             if (AccountDataAccess.CreateAccount(signUpDto))
             {
-                TempData["successMsg"] = "User registered succeffuly";
+                TempData["successMsg"] = "User successfully registered";
                 return RedirectToAction("Login", "Account");
             }
             else

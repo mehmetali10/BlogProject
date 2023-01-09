@@ -26,9 +26,10 @@
 
         </div>
 
-        <section id="card-menu">
+        
             @if (list != null)
             {
+            <div id="card-menu">
                 @foreach (var item in list)
                 {
             
@@ -56,10 +57,11 @@
                     </div>
                
                 }
+            </div>
             } else {
                 <p class="no-blog-state"><a asp-controller="Article" asp-action="AddNewBlog">There is no blog now. Let's create now!</a></p>
             }
-            </section>
+            
 
         <!-- Footer Section -->
         @Html.Partial("~/Views/Shared/_footer.cshtml")
